@@ -7,7 +7,7 @@ Use `k401.dta` to replicate the QMLE models specified in `Papke and Wooldridge 1
 ## Analysis
 
 Assume: 
-- `total employees = 20,000` 
+- total employees = 20,000
 - On average, employees contribute 21% of salary
 - Employer contributes 7% of salary.
 - The 401k is not the sole pension plan for the employer.
@@ -28,3 +28,10 @@ Assume:
 ## Time
 
 =< 8 hours. If you had more time, what would you do?
+
+## Links
+
+(Econometric Methods for Fractional Response Variables with an Application to 401(K) Plan Participation Rates)[https://econpapers.repec.org/article/jaejapmet/v_3a11_3ay_3a1996_3ai_3a6_3ap_3a619-32.htm].
+
+(Data description)[http://qed.econ.queensu.ca/jae/1996-v11.6/papke-wooldridge/readme.pw.txt]
+
