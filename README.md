@@ -97,4 +97,3 @@ Submit a .zip archive of the following:
 |              | [0.044]     | [0.422]     | [0.042]     | [0.416]     |
 | **Observations** | 4734    | 4734        | 4734        | 4734        |
 | **R-squared**| 0.144       | 0.168       | 0.182       | 0.197       |
-e
