@@ -7,6 +7,7 @@ df_headers = df.columns  # ['prate', 'mrate', 'totemp', 'age', 'sole']
 # totemp: Total firm employment.
 # age: Plan age.
 # sole: Binary where 1 means this is the firms only pension fund.
+print(df.head(10))
 
 # formula 22
 # E(PRATE∣X)=β1​+β2​MRATE+β3​log(EMP)+β4​(log(EMP))2+β5​AGE+β6​AGE2+β7​SOLE
