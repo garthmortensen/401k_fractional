@@ -1,0 +1,32 @@
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:                  prate   R-squared (uncentered):                   0.932
+Model:                            OLS   Adj. R-squared (uncentered):              0.932
+Method:                 Least Squares   F-statistic:                          1.074e+04
+Date:                Sat, 07 Sep 2024   Prob (F-statistic):                        0.00
+Time:                        20:39:51   Log-Likelihood:                          209.35
+No. Observations:                4734   AIC:                                     -406.7
+Df Residuals:                    4728   BIC:                                     -367.9
+Df Model:                           6                                                  
+Covariance Type:            nonrobust                                                  
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+mrate          0.0649      0.004     15.922      0.000       0.057       0.073
+log_emp        0.3536      0.036      9.900      0.000       0.284       0.424
+log_emp2      -0.4924      0.067     -7.396      0.000      -0.623      -0.362
+age            0.0058      0.000     15.210      0.000       0.005       0.007
+age2           0.0006      6e-05      9.326      0.000       0.000       0.001
+sole           0.1909      0.007     28.676      0.000       0.178       0.204
+==============================================================================
+Omnibus:                      801.812   Durbin-Watson:                   1.737
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1552.143
+Skew:                          -1.037   Prob(JB):                         0.00
+Kurtosis:                       4.889   Cond. No.                     1.47e+03
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[3] The condition number is large, 1.47e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
