@@ -4,6 +4,8 @@
 
 Replicate the Quasi-Maximum Likelihood Estimation (QMLE) models from *Papke and Wooldridge (1996)*, Section 4, equations (22) and (23), using `k401.dta`. This involves reproducing the results in Table III and analyzing the relationship between the participation rate and other 401k variables.
 
+TODO: I interpret Table III columns 3, 4 as not tied to equations 22, 23 since they contain MRATE^2.
+
 ## Overview
 
 ### Dataset: `k401.dta`
@@ -48,6 +50,8 @@ Replicate the Quasi-Maximum Likelihood Estimation (QMLE) models from *Papke and 
 
 1. How do you think predictions from (22) and (23) will match with the employer's participation rate?
 
+The study says match rate (7%) is the key explanatory variable. 
+
 2. Which model seems more reasonable and why?
 
 ## Deliverables
@@ -55,7 +59,7 @@ Replicate the Quasi-Maximum Likelihood Estimation (QMLE) models from *Papke and 
 Submit a .zip archive of the following:
 1. The code.
 2. Replicated Table III output (.pdf, .docx, .html).
-3. 2-3 paragraphs summarizing your analysis aimed at a non-technical policy maker audience (.pdf, .docx, .html).
+3. 2-3 paragraphs summarizing your analysis aimed at a non-technical policy maker audience.
 
 ## Time
 
