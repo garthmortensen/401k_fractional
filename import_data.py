@@ -1,3 +1,16 @@
+# 401k_fractional coding challenge
+
+ascii_banner = """
+ /$$   /$$  /$$$$$$    /$$   /$$
+| $$  | $$ /$$$_  $$ /$$$$  | $$
+| $$  | $$| $$$$\ $$|_  $$  | $$   /gm
+| $$$$$$$$| $$ $$ $$  | $$  | $$  /$$/
+|_____  $$| $$\ $$$$  | $$  | $$$$$$/
+      | $$| $$ \ $$$  | $$  | $$_  $$
+      | $$|  $$$$$$/ /$$$$$$| $$ \  $$
+      |__/ \______/ |______/|__/  \__/"""
+print(ascii_banner)
+
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -11,50 +24,48 @@ df.rename(columns={"totemp": "emp"}, inplace=True)
 # age: Plan age.
 # sole: Binary where 1 means this is the firms only pension fund.
 
-# given equation, add additional data transformation columns
+# add additional data transformations needed for equations
 df["log_emp"] = np.log(df["emp"])
 df["log_emp2"] = np.log(df["log_emp"]) ** 2
 df["age2"] = df["age"] ** 2
 
-# reorder columns to align with equation for easier mental processing
+# reorder columns to align with equations for easier comparisons
 column_reorder = ["prate", "mrate", "log_emp", "log_emp2", "age", "age2", "sole"]
 df = df[column_reorder]
-print(df.head(5))
 
 # dependent
 y = df["prate"]
-# independent
+# independents
 x = df[["mrate", "log_emp", "log_emp2", "age", "age2", "sole"]]  # [[]] for df, [] for series
-# x = sm.add_constant(x)  # adds intercept term (β1)
+x = sm.add_constant(x)  # β1
+print(f"x dimensions: {x.shape}")
 
-# formula 22
+# equation 22
 # E(PRATE∣X)=β1​+β2​MRATE+β3​log(EMP)+β4​(log(EMP))^2+β5​AGE+β6​AGE^2+β7​SOLE
 # https://www.geeksforgeeks.org/ordinary-least-squares-ols-using-statsmodels/
 eq_22 = sm.OLS(y, x)
 eq_22_fitted = eq_22.fit()
-# print(eq_22_fitted.summary())
 
 # write results
 with open("results/eq_22_summary.html", "w") as f:
     f.write(eq_22_fitted.summary().as_html())
+# TODO: Interpret significant variables.
 
-# formula 23
+# equation 23
 # E(PRATE∣X)=G(β1​+β2​MRATE+β3​log(EMP)+β4​(log(EMP))^2+β5​AGE+β6​AGE^2+β7​SOLE)
 eq_23 = sm.Logit(y, x)  # results [0, 1]
 eq_23_fitted = eq_23.fit()
-# print(eq_23_fitted.summary())
-# ~1.5 hours?
 
 # write results
 with open("results/eq_23_summary.html", "w") as f:
     f.write(eq_23_fitted.summary().as_html())
+# TODO: Interpret significant variables.
 
 # predict
 # https://stackoverflow.com/questions/13218461/predicting-values-using-an-ols-model-with-statsmodels
 
 # prep new data
-# ["mrate", "log_emp", "log_emp2", "age", "age2", "sole"]
-assumed_values = {
+assumed_df = pd.DataFrame({
     # - Employer contributes 7% of salary.
     "mrate": [0.07],
     # - total employees = 20,000
@@ -64,17 +75,19 @@ assumed_values = {
     "age": [12],
     "age2": [12 ** 2],
     # - The 401k is not the sole pension plan for the employer.
-    "sole": [0]
-}
-assumed_df = pd.DataFrame(assumed_values)
+    "sole": [0],
+})
+# assumed_df = sm.add_constant(assumed_df)  # FIXME: Not working!
+assumed_df['const'] = 1  # β1
+
+print(f"assumed_df dimensions: {assumed_df.shape}")
+
 # TODO: whats this for?
 # - On average, employees contribute 21% of salary. Is this participation rate?
 
-# do i need this?
-# new_data = sm.add_constant(assumed_df)
-
-
-
-
-
+# predict
+eq_22_pred = eq_22_fitted.predict(assumed_df)
+print(f"eq_22_pred prate: {eq_22_pred}")
+eq_23_pred = eq_23_fitted.predict(assumed_df)
+print(f"eq_23_pred prate: {eq_23_pred}")
 
