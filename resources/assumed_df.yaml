@@ -1,0 +1,20 @@
+# company data
+employer:
+  mrate: 0.07  # company matches 7% of salary
+
+# employee data
+employees:
+  total: 20000  # total number of employees
+  log_emp: 9.903487552536127  # then log that
+  log_emp2: 0.14672713921750674  # then square that
+
+# account data
+account:
+  age: 12  # account age
+  age2: 144  # then square that
+
+# plan data
+plan:
+  sole: 0  # if company's sole pension plan
+
+# TODO: whats this for? On average, employees contribute 21% of salary. Is this participation rate?

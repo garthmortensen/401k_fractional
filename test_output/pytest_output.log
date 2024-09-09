@@ -1,0 +1,8 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-8.3.2, pluggy-1.5.0
+rootdir: /home/garth/code/401k_fractional
+collected 1 item
+
+test/test_placeholder.py .                                               [100%]
+
+============================== 1 passed in 0.01s ===============================

@@ -6,6 +6,47 @@ Replicate the Quasi-Maximum Likelihood Estimation (QMLE) models from *Papke and 
 
 Note: I interpret Table III columns 3, 4 as not tied to equations 22, 23 since they contain MRATE^2.
 
+## User Guide
+
+### git clone
+
+```bash
+git clone git@github.com:garthmortensen/401k_fractional.git
+cd 401k_fractional
+```
+
+### setup venv
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+### install dependencies
+
+```bash
+pip install -r ./requirements.txt
+```
+
+### run code
+
+```bash
+python 401k.py
+```
+
+### test code
+
+```bash
+pytest .
+```
+
+
+### run docker
+
+```bash
+podman build -t Dockerfile .
+```
+
 ## Overview
 
 ### Dataset: `k401.dta`

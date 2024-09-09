@@ -1,0 +1,56 @@
+20240908_212431 INFO import_data.py:49 <module>| 
+ /$$   /$$  /$$$$$$    /$$   /$$
+| $$  | $$ /$$$_  $$ /$$$$  | $$
+| $$  | $$| $$$$\ $$|_  $$  | $$   /gm
+| $$$$$$$$| $$ $$ $$  | $$  | $$  /$$/
+|_____  $$| $$\ $$$$  | $$  | $$$$$$/
+      | $$| $$ \ $$$  | $$  | $$_  $$
+      | $$|  $$$$$$/ /$$$$$$| $$ \  $$
+      |__/ \______/ |______/|__/  \__/
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PARTICIPATION RATE: % of employees eligible for a 401(k) plan who have an active account, whether or not they contributed to it in the current year.
+Match Rate: Estimate of how much the employer contributes to the employee’s 401(k), compared to what the employee contributes. Includes matching contributions, fixed amounts, etc. "Overall generosity" of the plan.
+emp: Total firm employment.
+age: Plan age.
+sole: Binary where 1 means this is the firms only pension fund.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+20240908_212431 INFO import_data.py:71 <module>| x dimensions: (4734, 7)
+20240908_212431 INFO import_data.py:82 <module>| r_squared: 0.1413078079643556
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this const results in a 0.9432 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| const is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this mrate results in a 0.0346 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| mrate is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this log_emp results in a 0.1343 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| log_emp is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this log_emp2 results in a -0.2921 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| log_emp2 is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this age results in a 0.0032 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| age is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this age2 results in a 0.0000 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| age2 is not statistically significant (P = 0.7014).
+20240908_212431 INFO import_data.py:95 <module>| A 1% increase in this sole results in a 0.0146 change in the participation rate.
+20240908_212431 INFO import_data.py:96 <module>| sole is not statistically significant (P = 0.0036).
+20240908_212431 INFO import_data.py:110 <module>| r_squared: 0.1413078079643556
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this const results in a 2.5304 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| const is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this mrate results in a 0.5451 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| mrate is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this log_emp results in a 1.4974 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| log_emp is not statistically significant (P = 0.0018).
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this log_emp2 results in a -3.1846 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| log_emp2 is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this age results in a 0.0351 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| age is statistically significant (P < 0.001).
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this age2 results in a 0.0003 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| age2 is not statistically significant (P = 0.7195).
+20240908_212431 INFO import_data.py:123 <module>| A 1% increase in this sole results in a 0.1185 change in the participation rate.
+20240908_212431 INFO import_data.py:124 <module>| sole is not statistically significant (P = 0.2432).
+20240908_212431 INFO import_data.py:160 <module>| assumed_df dimensions: (1, 7)
+20240908_212431 INFO import_data.py:164 <module>| eq_22_pred prate: 0    2.27324
+dtype: float64
+20240908_212431 INFO import_data.py:166 <module>| eq_23_pred prate: 0    1.0
+dtype: float64
