@@ -88,24 +88,32 @@ podman build -t Dockerfile .
 - Age of account = 12 years.
 - Ignore other factors.
 
+## Conclusion
+
 1. How do you think predictions from (22) and (23) will match with the employer's participation rate?
 
-The study says match rate (7%) is the key explanatory variable.
+I expect match rate will play a key role in predicting participation, and per the paper, the most important role. Given we have a fair amount of observations and few variables, I expect a reasonable OLS fit.
 
 2. Which model seems more reasonable and why?
 
 Logit, since it captures values ranging [0, 1], which is appropriate for participation rate (a percentage).
 
-## Deliverables
-
-Submit a .zip archive of the following:
-1. The code.
-2. Replicated Table III output (.pdf, .docx, .html).
 3. 2-3 paragraphs summarizing your analysis aimed at a non-technical policy maker audience.
 
-## Time
+This repo seeks to reproduce part of Papke and Wooldridge's research paper *Econometric Methods for Fractional Response Variables with an Application to 401(k) Plan Participation Rates*, using an iterative approach. In this initial iteration, the basic building blocks to enable reproduction are established:
 
-=< 8 hours. If more time, how to improve?
+    1. version control (git)
+    1. language and library version control (virtual environment, requirements)
+    1. logging
+    1. unit testing
+    1. CI/CD (github actions)
+    1. containerization
+    1. econometric analysis
+    1. TODO comments to suggest improvements for subsequent iterations
+
+The econometric analysis models participation rates of 401k plans, given `participation_rate`, `match_rate`, `totemp`, `age`, and `sole_plan` as well as transformations to capture non-linear behavior. Two regression models are fitted to the author's Stata dataset (`./inputs/k401k.dta`), one OLS (equation 22) and one Logit (equation 23). Once models are fitted, specific values are imported from a configuration file (`./inputs/assumed_df.yaml`), and predictions are made.
+
+Summary statistics (`./output_tables/*.html`) and logs (`./logs/YYYYMMDD_HHMMSS_401k.log`) indicate `const` (β=2.53), `mrate` (β=0.55), `log_emp2` (β=-3.18) and `age` (β=0.04) are all statistically significant. 
 
 ## Links
 
@@ -113,33 +121,3 @@ Submit a .zip archive of the following:
 
 [Data description](http://qed.econ.queensu.ca/jae/1996-v11.6/papke-wooldridge/readme.pw.txt).
 
-### Table 3: Replicate this
-
-| Variable     | (1) OLS     | (2) QMLE    | (3) OLS     | (4) QMLE    |
-|--------------|-------------|-------------|-------------|-------------|
-| **MRATE**    | 0.034       | 0.542       | 0.143       | 1.665       |
-|              | (0.003)     | (0.045)     | (0.008)     | (0.089)     |
-|              | [0.003]     | [0.079]     | [0.008]     | [0.104]     |
-| **MRATE²**   | -           | -           | -0.029      | -0.332      |
-|              |             |             | (0.002)     | (0.021)     |
-|              |             |             | [0.002]     | [0.026]     |
-| **log(EMP)** | -0.101      | -1.038      | -0.099      | -1.030      |
-|              | (0.012)     | (0.121)     | (0.012)     | (0.112)     |
-|              | [0.012]     | [0.110]     | [0.012]     | [0.110]     |
-| **log(EMP)²**| 0.0051      | 0.0540      | 0.0050      | 0.0536      |
-|              | (0.0008)    | (0.0078)    | (0.0008)    | (0.0072)    |
-|              | [0.0008]    | [0.0071]    | [0.0008]    | [0.0071]    |
-| **AGE**      | 0.0064      | 0.0621      | 0.0056      | 0.0548      |
-|              | (0.0008)    | (0.0089)    | (0.0008)    | (0.0082)    |
-|              | [0.0007]    | [0.0078]    | [0.0007]    | [0.0077]    |
-| **AGE²**     | -0.00008    | -0.00071    | -0.00007    | -0.00063    |
-|              | (0.00002)   | (0.00021)   | (0.00002)   | (0.00019)   |
-|              | [0.00002]   | [0.00018]   | [0.00001]   | [0.00018]   |
-| **SOLE**     | 0.0140      | 0.1190      | 0.0066      | 0.0642      |
-|              | (0.0050)    | (0.0510)    | (0.0049)    | (0.0471)    |
-|              | [0.0052]    | [0.0503]    | [0.0051]    | [0.0498]    |
-| **ONE**      | 1.213       | 5.429       | 1.170       | 5.105       |
-|              | (0.045)     | (0.467)     | (0.044)     | (0.431)     |
-|              | [0.044]     | [0.422]     | [0.042]     | [0.416]     |
-| **Observations** | 4734    | 4734        | 4734        | 4734        |
-| **R-squared**| 0.144       | 0.168       | 0.182       | 0.197       |

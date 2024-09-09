@@ -49,7 +49,7 @@ sole: Binary where 1 means this is the firms only pension fund.
 logging.info(ascii_banner)
 
 # ["prate", "mrate", "totemp", "age", "sole"]
-df = pd.read_stata("resources/k401.dta")
+df = pd.read_stata("inputs/k401.dta")
 df.rename(columns={"totemp": "emp"}, inplace=True)
 
 # add additional data transformations needed for equations
@@ -100,7 +100,8 @@ for each_x in x:
     logging.info(f"{each_x} is {significance}")
 
 # write results
-with open("results/eq_22_summary.html", "w") as f:
+# FIXME: table output does not match Table III
+with open("output_tables/eq_22_summary.html", "w") as f:
     f.write(eq_22_fitted.summary().as_html())
 
 # equation 23
@@ -130,14 +131,15 @@ for each_x in x:
     logging.info(f"{each_x} is {significance}")
 
 # write results
-with open("results/eq_23_summary.html", "w") as f:
+# FIXME: table output does not match Table III
+with open("output_tables/eq_23_summary.html", "w") as f:
     f.write(eq_23_fitted.summary().as_html())
 
 # predict
 # https://stackoverflow.com/questions/13218461/predicting-values-using-an-ols-model-with-statsmodels
 
 # yaml > json
-with open("./resources/assumed_df.yaml", "r") as file:
+with open("./inputs/assumed_df.yaml", "r") as file:
     assumed_df = yaml.safe_load(file)
 
 # define variables imported from yaml
@@ -177,3 +179,4 @@ logging.info(f"eq_23_pred prate: {eq_23_pred}")
 # TODO: Add unit testing
 # TODO: Replace filesystem with db via sqlalchemy
 # TODO: Add API via flask
+# TODO: Output a graph of the OLS line, observations
