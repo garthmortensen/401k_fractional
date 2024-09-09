@@ -1,10 +1,10 @@
-`# 401k_fractional coding challenge
+# 401k_fractional coding challenge
 
 ## Intro
 
 Replicate the Quasi-Maximum Likelihood Estimation (QMLE) models from *Papke and Wooldridge (1996)*, Section 4, equations (22) and (23), using `k401.dta`. This involves reproducing the results in Table III and analyzing the relationship between the participation rate and other 401k variables.
 
-TODO: I interpret Table III columns 3, 4 as not tied to equations 22, 23 since they contain MRATE^2.
+Note: I interpret Table III columns 3, 4 as not tied to equations 22, 23 since they contain MRATE^2.
 
 ## Overview
 
@@ -26,7 +26,6 @@ TODO: I interpret Table III columns 3, 4 as not tied to equations 22, 23 since t
 - **`totemp`**: Total firm employees.
 - **`age`**: The age of 401k plan.
 - **`sole_plan`**: Binary where 1 means this is the firm's only pension fund.
-
 
 ### Equations
 
@@ -50,9 +49,11 @@ TODO: I interpret Table III columns 3, 4 as not tied to equations 22, 23 since t
 
 1. How do you think predictions from (22) and (23) will match with the employer's participation rate?
 
-The study says match rate (7%) is the key explanatory variable. 
+The study says match rate (7%) is the key explanatory variable.
 
 2. Which model seems more reasonable and why?
+
+Logit, since it captures values ranging [0, 1], which is appropriate for participation rate (a percentage).
 
 ## Deliverables
 
