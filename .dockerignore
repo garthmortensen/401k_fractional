@@ -1,0 +1,36 @@
+# Ignore Python bytecode and compiled files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore logs and results directories
+logs/
+results/
+
+# Ignore YAML files if sensitive
+*.yaml
+
+# Ignore Git-related files
+.git
+.gitignore
+
+# Ignore Docker-related files (you don't want these inside your container)
+Dockerfile
+.dockerignore
+
+# Ignore OS artifacts
+.DS_Store
+Thumbs.db
+
+# Ignore documentation files
+*.pdf
+*.docx
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment-specific files
+.env
