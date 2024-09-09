@@ -11,19 +11,20 @@ import statsmodels.api as sm
 import yaml
 
 # TODO: carve logging out of this script
-timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
-handlers=[  # write stdout and errout
+timestamp = time.strftime("%Y%m%d_%H%M%S", time.localtime())
+handlers = [  # write stdout and errout
     logging.StreamHandler(),  # stream to console
-    logging.FileHandler(filename=f"./logs/{timestamp}_401k.log", mode="w")  # write to file
+    logging.FileHandler(
+        filename=f"./logs/{timestamp}_401k.log", mode="w"
+    ),  # write to file
 ]
 
 # 20240202_154449 INFO practice.py:56 log_meta| pid:    10629
-log_format = "%(asctime)s %(levelname)s %(filename)s:%(lineno)d %(funcName)s| %(message)s"
+log_format = (
+    "%(asctime)s %(levelname)s %(filename)s:%(lineno)d %(funcName)s| %(message)s"
+)
 logging.basicConfig(
-    level=logging.INFO,
-    format=log_format,
-    datefmt="%Y%m%d_%H%M%S",
-    handlers=handlers
+    level=logging.INFO, format=log_format, datefmt="%Y%m%d_%H%M%S", handlers=handlers
 )
 
 ascii_banner = """\n
@@ -65,7 +66,9 @@ df = df[column_reorder]
 # dependent
 y = df["prate"]
 # independents
-x = df[["mrate", "log_emp", "log_emp2", "age", "age2", "sole"]]  # [[]] for df, [] for series
+x = df[
+    ["mrate", "log_emp", "log_emp2", "age", "age2", "sole"]
+]  # [[]] for df, [] for series
 x = sm.add_constant(x)  # β1
 logging.info(f"x dimensions: {x.shape}")
 
@@ -85,13 +88,15 @@ for each_x in x:
     # Get coefficient and p-value for the variable
     coef = eq_22_fitted.params[each_x]
     pvalue = eq_22_fitted.pvalues[each_x]
-    
+
     if pvalue < 0.001:
         significance = "statistically significant (P < 0.001)."
     else:
         significance = f"not statistically significant (P = {pvalue:.4f})."
-    
-    logging.info(f"A 1% increase in this {each_x} results in a {coef:.4f} change in the participation rate.")
+
+    logging.info(
+        f"A 1% increase in this {each_x} results in a {coef:.4f} change in the participation rate."
+    )
     logging.info(f"{each_x} is {significance}")
 
 # write results
@@ -113,13 +118,15 @@ for each_x in x:
     # Get coefficient and p-value for the variable
     coef = eq_23_fitted.params[each_x]
     pvalue = eq_23_fitted.pvalues[each_x]
-    
+
     if pvalue < 0.001:
         significance = "statistically significant (P < 0.001)."
     else:
         significance = f"not statistically significant (P = {pvalue:.4f})."
-    
-    logging.info(f"A 1% increase in this {each_x} results in a {coef:.4f} change in the participation rate.")
+
+    logging.info(
+        f"A 1% increase in this {each_x} results in a {coef:.4f} change in the participation rate."
+    )
     logging.info(f"{each_x} is {significance}")
 
 # write results
