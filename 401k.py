@@ -140,14 +140,16 @@ with open("results/eq_23_summary.html", "w") as f:
 with open("./resources/assumed_df.yaml", "r") as file:
     assumed_df = yaml.safe_load(file)
 
-# TODO: these transformations should be done in code, not precalculated in yaml
 # define variables imported from yaml
 mrate = assumed_df["employer"]["mrate"]
-log_emp = assumed_df["employees"]["log_emp"]
-log_emp2 = assumed_df["employees"]["log_emp2"]
+emp = assumed_df["employees"]["total"]
 age = assumed_df["account"]["age"]
-age2 = assumed_df["account"]["age2"]
 sole = assumed_df["plan"]["sole"]
+
+# transformations
+log_emp = np.log(emp)
+log_emp2 = log_emp ** 2
+age2 = age ** 2
 
 # build dictionary from imported values
 data = {
@@ -171,9 +173,7 @@ logging.info(f"eq_22_pred prate: {eq_22_pred}")
 eq_23_pred = eq_23_fitted.predict(assumed_df)
 logging.info(f"eq_23_pred prate: {eq_23_pred}")
 
-# TODO: Replace filesystem with db via sqlalchemy
-# TODO: Add API via flask
-# TODO: Containerize via docker
 # TODO: functionalize the code
 # TODO: Add unit testing
-# TODO: Add CI/CD
+# TODO: Replace filesystem with db via sqlalchemy
+# TODO: Add API via flask
