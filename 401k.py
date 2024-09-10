@@ -84,6 +84,7 @@ r_squared = eq_22_fitted.rsquared
 logging.info(f"r_squared: {r_squared}")
 
 # loop through each param in equation, logging.info coef, statistical significance
+# TODO: MCagle recommended pd.Series.apply instead of for loop. Legit.
 for each_x in x:
     # Get coefficient and p-value for the variable
     coef = eq_22_fitted.params[each_x]
@@ -180,3 +181,4 @@ logging.info(f"eq_23_pred prate: {eq_23_pred}")
 # TODO: Replace filesystem with db via sqlalchemy
 # TODO: Add API via flask
 # TODO: Output a graph of the OLS line, observations
+# TODO: MCagle recommends replacing f-strings in logs with %s. Not sure if this is only for pd iterations or not. Need to talk to him/research further.
